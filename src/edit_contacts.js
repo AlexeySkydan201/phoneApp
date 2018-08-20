@@ -95,7 +95,7 @@
         app.render();
     }
     deleteContacts() {
-        let url = `http://easycode-js.herokuapp.com/skal/users/${this.id}`;
+        let url = `https://easycode-js.herokuapp.com/skal/users/${this.id}`;
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('readystatechange', () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -123,7 +123,7 @@
             gender: patch.children[5].children[2].textContent.trim(),
         };
         console.log(`patch user`, user);
-        fetch(`http://easycode-js.herokuapp.com/skal/users/${this.id}`, {
+        fetch(`https://easycode-js.herokuapp.com/skal/users/${this.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

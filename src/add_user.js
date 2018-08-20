@@ -73,7 +73,7 @@
             address: app.pages.addUser.container1.children[1].children[0].children[4].textContent.trim(),
             gender: app.pages.addUser.container1.children[1].children[0].children[5].textContent.trim(),
         };
-        fetch('http://easycode-js.herokuapp.com/skal/users/', {
+        fetch('https://easycode-js.herokuapp.com/skal/users/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

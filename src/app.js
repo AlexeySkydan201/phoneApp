@@ -33,7 +33,7 @@ class App {
                     c.bd = t;
                     c.sorts();
                 };
-            }, 1000);
+            }, 2000);
         }
         if (this.activPage == 'User') {
             this.lol.innerHTML = '';

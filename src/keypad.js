@@ -3,7 +3,7 @@
         this.lol = document.getElementById('lol');
         this.strNumber = `<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
         <span class="numbers" id = "monitor"></span>
-        <span class="glyphicon glyphicon-circle-arrow-left " aria-hidden="true" onclick = "app.pages.keypad.deletKey()"></span>`;
+        <span class="glyphicon glyphicon-circle-arrow-left " aria-hidden="true" id="delete1"></span>`;
         this.numberPhone = '';
     }
     render() {
@@ -35,18 +35,18 @@
     strKey() {
 
         return `
-        <button class="key" onclick="app.pages.keypad.keyOut(1)">1</button>
-        <button class="key" onclick="app.pages.keypad.keyOut(2)">2</button>
-        <button class="key" onclick="app.pages.keypad.keyOut(3)">3</button>
-        <button class="key" onclick="app.pages.keypad.keyOut(4)">4</button>
-        <button class="key" onclick="app.pages.keypad.keyOut(5)">5</button>
-        <button class="key" onclick="app.pages.keypad.keyOut(6)">6</button>
-        <button class="key" onclick="app.pages.keypad.keyOut(7)">7</button>
-        <button class="key" onclick="app.pages.keypad.keyOut(8)">8</button>
-        <button class="key" onclick="app.pages.keypad.keyOut(9)">9</button>
-        <button class="key" onclick="app.pages.keypad.keyOut('*')">*</button>
-        <button class="key" onclick="app.pages.keypad.keyOut(0)">0</button>
-        <button class="key" onclick="app.pages.keypad.keyOut('#')">#</button>
+        <button class="key">1</button>
+        <button class="key" >2</button>
+        <button class="key" >3</button>
+        <button class="key" >4</button>
+        <button class="key" >5</button>
+        <button class="key" >6</button>
+        <button class="key" >7</button>
+        <button class="key" >8</button>
+        <button class="key" >9</button>
+        <button class="key" >*</button>
+        <button class="key" >0</button>
+        <button class="key" >#</button>
         <button class="key"> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></button>
         `
     }
@@ -71,7 +71,6 @@
         } else {
             this.monitor.textContent += `${num}`;
         }
-        console.log(`monit`, this.monitor.textContent)
     }
     deletKey() {
         let length1 = this.numberPhone.length;
@@ -92,9 +91,7 @@
         } else {
             this.monitor.textContent = this.monitor.textContent.substr(0, length2 - 1);
         }
-        console.log(`monit`, this.monitor.textContent, `  num `, this.numberPhone)
-
-
     }
 
 }
+export default Keypad;

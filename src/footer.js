@@ -4,14 +4,6 @@ class Router {
     }
     render() {
         this.footer.innerHTML = this.strFooter();
-        let nav = document.getElementById('nav1');
-        [...nav.children].forEach(element => {
-            element.addEventListener('click', () => {
-                event.preventDefault();
-                app.activPage = element.children[1].textContent;
-                app.render();
-            });
-        });
     }
     strFooter() {
         return `<div class="container bottom-radius">
@@ -40,5 +32,4 @@ class Router {
         </div>`;
     }
 }
-var f = new Router();
-f.render();
+export default Router;

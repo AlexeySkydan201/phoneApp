@@ -1,32 +1,26 @@
 ﻿class Contacts {
     constructor() {
-        this.bd = bd;
+        this.bd;
         this.lol = document.getElementById('lol');
 
-        this.thead = `<thead>
+        this.thead = `<thead >
         <tr>
-            <th onclick = "app.pages.contacts.sorts('fullName')">Name</th>
-            <th onclick = "app.pages.contacts.sorts('phone')">phone</th>
-            <th onclick = "app.pages.contacts.sorts('email')">Email</th>
+            <th class = "th1" >fullName</th>
+            <th class = "th1">phone</th>
+            <th class = "th1">email</th>
         </tr>
         </thead>`;
 
     }
-    render(bd) {
+    render(bd, param) {
         this.bd = bd;
-        console.log(`bdContacts`, this.bd);
+        this.lol.innerHTML = '';
         this.lol.innerHTML += this.header();
-
         this.lol.innerHTML += this.main();
-        this.sorts();
-        this.search = document.getElementById('search');
-        this.search.oninput = function() {
-            let t = this.filter(search.value);
-            this.bd = t;
-            this.sorts();
-
-        };
-
+        this.bd = this.bd.sort((a, b) => {
+            return a[param] > b[param];
+        });
+        this.tbody(this.bd);
     }
     header() {
         return `<header class="header">
@@ -53,55 +47,18 @@
         </div>`
     }
     table1() {
-
-        return `<table class="table table-hover contacts" id="myTable"></table>`;
-    }
-    goToUser(id) {
-        app.activPage = 'User';
-        app.render(id);
-
+        return `<table class="table table-hover contacts" id="myTable">${this.thead}<tbody></tbody></table>`;
     }
     tbody(bd) {
-
-        var result = this.bd.reduce(function(sum, current) {
-            // console.log(`r `, current);
-
-            return sum + `<tr onclick = "app.pages.contacts.goToUser('${current._id}')">
+        var result = bd.reduce(function(sum, current) {
+            return sum + `<tr class = "tr" value = "${current._id}">
         <td>${current.fullName}</td>
         <td>${current.phone}</td>
         <td>${current.email}</td>
         </tr>`;
         }, '');
-
-        this.table = document.getElementById('myTable');
-        let h = this.thead + `<tbody>${result}</tbody>`;
-        this.table.innerHTML = h;
-
-    }
-    filter(str) {
-
-        let dataBaseFilter = [];
-        this.bd.forEach((value, i) => {
-            for (let key in value) {
-                if (key == 'fullName' || key == 'email' || key == 'phone') {
-                    for (let j = 0; j <= value[key].length - str.length; j++) {
-                        if (value[key].substr(j, str.length) == str) {
-                            dataBaseFilter.push(value);
-                            return;
-                        }
-                    }
-                }
-
-            }
-        });
-
-        return dataBaseFilter;
-    }
-    sorts(param) {
-        this.bd.sort((a, b) => {
-            return a[param] > b[param];
-        });
-
-        this.tbody(this.bd);
+        let table = document.getElementById('myTable');
+        table.children[1].innerHTML = result;
     }
 }
+export default Contacts;

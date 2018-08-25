@@ -6,8 +6,8 @@
         this.phone = '';
 
     }
-    render(id) {
-        this.bd = app.bd;
+    render(bd, id) {
+        this.bd = bd;
         this.id = id;
         this.bd.forEach(element => {
             if (element._id == id) {
@@ -18,22 +18,14 @@
         this.lol.innerHTML += this.header();
         this.lol.innerHTML += this.main();
     }
-    goToEdit(id) {
-        app.activPage = 'Edit contact';
-        app.render(id);
-    }
-    goToContacts() {
-        app.activPage = 'Contacts';
-        app.render();
-    }
     header() {
         return `<header class="header">
         <div class="container top-radius">
             <div class="user-top-line">
-                <a onclick = "app.pages.user.goToContacts()">
+                <a id="cont1">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Contacts
                 </a>
-                <a  onclick = "app.pages.user.goToEdit('${this.id}')">Edit</a>
+                <a  id="goToEdit">Edit</a>
             </div>
         </div>
         </header>`;
@@ -79,5 +71,4 @@
     }
 
 }
-var user = new User();
-//user.render();
+export default User;

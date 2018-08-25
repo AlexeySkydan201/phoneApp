@@ -4,7 +4,6 @@ class Login {
         this.url = '';
         this.mass = [];
         this.bd = [];
-
     }
     entrance() {
         let str = `<header class="header">
@@ -18,53 +17,35 @@ class Login {
         <div class="container" id="container">
             <div class="edit-main-info">
                 <input type="text" id="who">
-                <input type="submit" value="войти" onclick="app.pages.login.button()">
+                <input type="submit" value="войти" id = "enter1" >
 
             </div>
 
         </div>
     </main>`;
         this.lol.innerHTML = str;
-
     }
     button() {
         var who = document.getElementById('who');
-        console.log(who.value)
         this.url = who.value;
         this.serverRequest();
-
-
-        app.bd = this.bd
-        app.activPage = 'Contacts';
-        app.render();
-
-
+        this.activPage = 'Contacts';
     }
     serverRequest() {
-        let url = `https://easycode-js.herokuapp.com/${this.url}/users`;
+        let url = `http://easycode-js.herokuapp.com/${this.url}/users`;
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 this.mass = JSON.parse(xhr.responseText);
-                // console.log(`t `, mass);
                 this.mass.forEach((element, i) => {
-                    //console.log(element);
                     this.bd.push(element.fullName);
                     this.bd[i] = element;
-
                 });
-
-
             }
         };
         xhr.open('GET', url, true);
         xhr.send();
     }
+
 }
-
-var l = new Login();
-var bd;
-setTimeout(() => {
-    bd = l.bd;
-
-}, 1000);
+export default Login;

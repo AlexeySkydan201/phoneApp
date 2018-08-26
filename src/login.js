@@ -32,7 +32,7 @@ class Login {
         this.activPage = 'Contacts';
     }
     serverRequest() {
-        let url = `http://easycode-js.herokuapp.com/${this.url}/users`;
+        let url = `https://easycode-js.herokuapp.com/${this.url}/users`;
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {

@@ -76,32 +76,6 @@
         return `<div class="scroll-holder" ><div class="edit-info" >${ph}${result}${delet}</div></div>`
 
     }
-    patch() {
-        let patch2 = document.getElementById('patch2');
-        let birth = patch2.children[3].children[2].textContent.trim();
-        if (birth == 'undefined' || birth == 'null') {
-            birth = '0001-01-01';
-        }
-        const user = {
-            fullName: patch2.children[1].children[2].textContent.trim(),
-            email: patch2.children[2].children[2].textContent.trim(),
-            birthdate: birth,
-            address: patch2.children[4].children[2].textContent.trim(),
-            gender: patch2.children[5].children[2].textContent.trim(),
-        };
-        fetch(`http://easycode-js.herokuapp.com/skal/users/${this.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        }).then(user => {
-            return user.json()
-        }).then(us => {
 
-        })
-
-
-    }
 }
 export default EditUser;

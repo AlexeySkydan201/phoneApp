@@ -35,14 +35,7 @@
             <button class="add-foto-btn"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                 <span contenteditable="true">add foto</span></button>
         </div>`;
-        var result = this.arrEditMainInfo.reduce((sum, current) => {
-            return sum + `<div class="edit-field">
-            <button href="#" class="add-btn" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                    
-                </button><span contenteditable="true" >${current}</span>
-        </div>`
-        }, '');
-        let mainInfoHolder = `<div class="main-info-holder">${result}</div>`
+
         return `<div class="edit-main-info">${photo}</div>`;
     }
     scrollHolder() {

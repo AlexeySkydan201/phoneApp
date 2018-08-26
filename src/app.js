@@ -130,6 +130,7 @@ class App {
         }
     }
     fAddUser() {
+        let url1 = this.url;
         let c = this.pages.addUser;
         c.render();
         var save1 = document.getElementById('save1');
@@ -144,7 +145,7 @@ class App {
                 address: this.rezult[4].textContent,
                 gender: this.rezult[5].textContent,
             };
-            fetch(`https://easycode-js.herokuapp.com/${this.url}/users/`, {
+            fetch(`https://easycode-js.herokuapp.com/${url1}/users/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -183,6 +184,7 @@ class App {
 
     }
     fEdit() {
+        let url2 = this.url;
         let c = this.pages.editUser;
         c.render(this.bd, this.id);
         let cont2 = document.getElementById('cont2');
@@ -194,7 +196,8 @@ class App {
             this.render();
         });
         deletContact.addEventListener('click', () => {
-            let url = `https://easycode-js.herokuapp.com/${this.url}/users/${this.id}`;
+            console.log(`url2`, url2);
+            let url = `https://easycode-js.herokuapp.com/${url2}/users/${this.id}`;
             var xhr = new XMLHttpRequest();
             xhr.addEventListener('readystatechange', () => {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -222,7 +225,7 @@ class App {
                 address: patch2[3].textContent,
                 gender: patch2[4].textContent,
             };
-            fetch(`https://easycode-js.herokuapp.com/${this.url}/users/${this.id}`, {
+            fetch(`https://easycode-js.herokuapp.com/${url2}/users/${this.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

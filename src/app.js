@@ -34,7 +34,7 @@ class App {
                 this.activPage = c.activPage;
                 setTimeout(() => {
                     this.bd = c.bd;
-
+                    this.url = c.url;
                     this.render();
                 }, 3000);
 
@@ -144,7 +144,7 @@ class App {
                 address: this.rezult[4].textContent,
                 gender: this.rezult[5].textContent,
             };
-            fetch('https://easycode-js.herokuapp.com/skal/users/', {
+            fetch(`https://easycode-js.herokuapp.com/${this.url}/users/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -194,7 +194,7 @@ class App {
             this.render();
         });
         deletContact.addEventListener('click', () => {
-            let url = `https://easycode-js.herokuapp.com/skal/users/${this.id}`;
+            let url = `https://easycode-js.herokuapp.com/${this.url}/users/${this.id}`;
             var xhr = new XMLHttpRequest();
             xhr.addEventListener('readystatechange', () => {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -222,7 +222,7 @@ class App {
                 address: patch2[3].textContent,
                 gender: patch2[4].textContent,
             };
-            fetch(`https://easycode-js.herokuapp.com/skal/users/${this.id}`, {
+            fetch(`https://easycode-js.herokuapp.com/${this.url}/users/${this.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

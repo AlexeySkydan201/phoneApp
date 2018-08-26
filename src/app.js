@@ -36,7 +36,7 @@ class App {
                     this.bd = c.bd;
 
                     this.render();
-                }, 1000);
+                }, 2000);
 
             });
         }
